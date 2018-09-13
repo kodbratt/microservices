@@ -8002,11 +8002,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\t\\t.csproj",
+      "projectUniqueName": "C:\\repos\\microservices\\t.csproj",
       "projectName": "t",
-      "projectPath": "C:\\t\\t.csproj",
+      "projectPath": "C:\\repos\\microservices\\t.csproj",
       "packagesPath": "C:\\Users\\alex_\\.nuget\\packages\\",
-      "outputPath": "C:\\t\\obj\\",
+      "outputPath": "C:\\repos\\microservices\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
