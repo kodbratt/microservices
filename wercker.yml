@@ -44,7 +44,7 @@ deploy:
     - internal/docker-push:
        username: $USERNAME
        password: $PASSWORD
-       repository: microservices
+       repository: /kodbratt/microservices
        registry: https://registry.hub.docker.com
        entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
 
