@@ -25,26 +25,27 @@ build:
         name: restor
         code: |
           dotnet restor
-     - script:
+    - script:
         name: build
         code: |
           dotnet build
-     - script:
-     name : publish
-     code : |
+    - script:
+       name : publish
+       code : |
           dotnet publish -o publish
     - script:
-    name: copy binary
-      code: |
-      cp -r . $WERCKER_OUTPUT_DIR/app
-      cd $ERCKER_OUTPUT_DIR/app
+        name: copy binary
+        code: |
+            cp -r . $WERCKER_OUTPUT_DIR/app
+            cd $ERCKER_OUTPUT_DIR/app
     
-    deploy:
-        steps:
-        - internal/docker-push:
-        username: $USERNAME
-        password: $PASSWORD
-        repository: microservices
-        registry: https://registry.hub.docker.com
+deploy:
+  steps:
+     - internal/docker-push:
+      username: $USERNAME
+      password: $PASSWORD
+      repository: microservices
+      registry: https://registry.hub.docker.com
+      entrypoint: "/pipeline/source/app/docker_entrypoint.sh"
 
 
