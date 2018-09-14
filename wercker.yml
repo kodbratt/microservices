@@ -22,9 +22,9 @@ build:
     # https://devcenter.wercker.com/development/steps/
   steps:
     - script:
-        name: restor
+        name: restore
         code: |
-          dotnet restor
+          dotnet restore
     - script:
         name: build
         code: |
