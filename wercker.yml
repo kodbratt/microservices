@@ -2,7 +2,8 @@
 # Docker Hub https://registry.hub.docker.com/_/debian/
 # Read more about containers on our dev center
 # https://devcenter.wercker.com/overview-and-core-concepts/containers/
-box: debian
+box: microsoft/dotnet:2.0.0-sdk
+no-response-timeout: 10
 # You can also use services such as databases. Read more on our dev center:
 # https://devcenter.wercker.com/administration/services/
 # services:
@@ -21,6 +22,29 @@ build:
     # https://devcenter.wercker.com/development/steps/
   steps:
     - script:
-        name: echo
+        name: restor
         code: |
-          echo "hello world!"
+          dotnet restor
+     - script:
+        name: build
+        code: |
+          dotnet build
+     - script:
+     name : publish
+     code : |
+          dotnet publish -o publish
+    - script:
+    name: copy binary
+      code: |
+      cp -r . $WERCKER_OUTPUT_DIR/app
+      cd $ERCKER_OUTPUT_DIR/app
+    
+    deploy:
+        steps:
+        - internal/docker-push:
+        username: $USERNAME
+        password: $PASSWORD
+        repository: microservices
+        registry: https://registry.hub.docker.com
+
+
